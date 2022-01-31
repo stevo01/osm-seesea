@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  seesea:
+    build: ./src/seesea/0.1
+    image: seesea:0.1
+    hostname: seesea
+    restart: unless-stopped
+    volumes:
+      - ./volumes/seesea/transfer:/transfer
+      - ./volumes/seesea/data/:/data/
+    networks:
+      db:
+      docker_dmz:
+    command: run
+
+ # Custom network so all services can communicate using a FQDN
+networks:
+  db:
+  docker_dmz:
+    external: true
