@@ -30,6 +30,9 @@ if [ "$1" = "run" ]; then
         # svn checkout https://svn.code.sf.net/p/seesea/code/trunk seesea-code
     fi
 
+    # select openjdk version 8
+    update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+
     echo "wait for terminate signal"
     while [  "$STOP_CONT" = "no"  ] ; do
       sleep 1
